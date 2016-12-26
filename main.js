@@ -19,6 +19,7 @@ module.exports.loop = function () {
 
 //Run the memory cleanup module for creeps
 units.memCleanup();
+    console.log('look at me!!!');
 
 /*    
     var tower = Game.getObjectById('TOWER_ID');
