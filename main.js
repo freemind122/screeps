@@ -31,7 +31,7 @@ Governor();
 
 
 try {
-    //console.log(unitInfo.harvester.parts2());
+    console.log(unitInfo.harvester.parts());
 } catch (e) {
     console.log("Didn't work.");
     console.log("Error details:");
