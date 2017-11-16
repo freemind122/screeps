@@ -6,41 +6,59 @@
  * var mod = require('general');
  * mod.thing == 'a thing'; // true
  */
-var harvester = require ('Units')
-var builder = require ('Units')
-var upgrader = require ('Units')
+var unitInfo = require('Units');
 
-var harvesterparts = harvester.parts
-var builderparts = builder.parts
-var upgraderparts = upgrader.parts
-
-var units = {
-    list : function (unit) {
-        return _.filter(Game.creeps,(creep) => creep.memory.role == unit);
+var custom = {
+    
+    variables : {
+        economy: {
+            harvestLevel : function (spawn) {
+                return Game.spawns[spawn].room.find(FIND_SOURCES).length;
+            },
+            unitBuildEnergy : function (spawn) {
+                return Game.spawns[spawn].room.energyCapacityAvailable;
+            },
+        },
+        units : {
+            list : function (unit) {
+                return _.filter(Game.creeps,(creep) => creep.memory.role == unit);
+            },
+            num : function (unit) {
+                return _.filter(Game.creeps,(creep) => creep.memory.role == unit).length;
+            },
+        },
     },
-    num : function (unit) {
-        return _.filter(Game.creeps,(creep) => creep.memory.role == unit).length;
+    
+    functions : {
+        economy : {
+            
+        },
+        units : {
+            make : function (spawn,unit) {
+                console.log('Atttempting to spawn new ' + unit + ' at ' + spawn);
+                var newUnit = Game.spawns[spawn].createCreep(eval('unitInfo.' + unit + '.parts()'), undefined, {role: unit});
+                if (newUnit < 0) {
+                    return 'low energy';
+                }
+                else {
+                    console.log('say hello to your new ' + unit + ', ' + newUnit);
+                    newUnit;
+                };
+            },
+        },
+        system : {
+            memCleanup : function () {
+                for(var name in Memory.creeps) {
+                    if(!Game.creeps[name]) {
+                        delete Memory.creeps[name];
+                        console.log('Clearing non-existing creep memory:', name);
+                    };
+                };
+            },
+        },
     },
-    make : function (spawn,unit) {
-        //console.log('Atttempting to spawn new ' + unit + ' at ' + spawn);
-        var newUnit = Game.spawns[spawn].createCreep(/*([WORK,WORK,WORK,WORK,CARRY,CARRY,CARRY,CARRY,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE,MOVE])*/([WORK,WORK,WORK,CARRY,MOVE,MOVE,MOVE,MOVE]), undefined, {role: unit});
-        if (newUnit < 0) {
-            return 'low energy';
-        }
-        else {
-            console.log('say hello to your new ' + unit + ', ' + newUnit);
-            newUnit;
-        };
-    },
-    memCleanup : function () {
-        for(var name in Memory.creeps) {
-            if(!Game.creeps[name]) {
-                delete Memory.creeps[name];
-                console.log('Clearing non-existing creep memory:', name);
-            };
-        };
-    },
+    
 };
+    
 
-
-module.exports = units;
+module.exports = custom;
