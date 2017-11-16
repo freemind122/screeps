@@ -6,28 +6,35 @@
  * var mod = require('Overwatch');
  * mod.thing == 'a thing'; // true
  */
-var units = require ('general');
+var custom = require ('general');
 
 var harvester = require ('Units')
 var builder = require ('Units')
 var upgrader = require ('Units')
 
-
-function Overwatch () {
-    if (units.num('harvester') < 2) {
-        units.make('Spawn1','harvester');
-    }
-    else {
-        if (units.num('builder') < 3) {
-            units.make('Spawn1','builder');
+var Overwatch = {
+    units : function() {
+        if (custom.variables.units.num('harvester') < 1 * custom.variables.economy.harvestLevel('Origin')) {
+            custom.functions.units.make('Origin','harvester');
         }
         else {
-            if (units.num('upgrader') < 1) {
-                units.make('Spawn1','upgrader');
+            if (custom.variables.units.num('builder') < 2) {
+                custom.functions.units.make('Origin','builder');
+            }
+            else {
+                if (custom.variables.units.num('upgrader') < 2) {
+                    custom.functions.units.make('Origin','upgrader');
+                }
+                else {
+                    if(custom.variables.units.num('mover') < 1) {
+                        custom.functions.units.make('Origin','mover');
+                    }
+                }
             }
         }
     }
-};
+}
+
 
 
 module.exports = Overwatch;
