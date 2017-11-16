@@ -1,6 +1,5 @@
-var harvester = require('Units');
-var builder = require('Units');
-var upgrader = require('Units');
+
+var unitInfo = require('Units');
 
 //Variables from the creep roles modules
 var roleHarvester = require('role.harvester');
@@ -8,8 +7,7 @@ var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 
 //Function for listing out all active units of a specific type
-var units = require('general');
-
+var custom = require('general');
 
 
 var Overwatch = require('Overwatch');
@@ -18,29 +16,26 @@ var Governor = require ('Behavior');
 module.exports.loop = function () {
 
 //Run the memory cleanup module for creeps
-units.memCleanup();
-
-/*    
-    var tower = Game.getObjectById('TOWER_ID');
-    if(tower) {
-        var closestDamagedStructure = tower.pos.findClosestByRange(FIND_STRUCTURES, {
-            filter: (structure) => structure.hits < structure.hitsMax
-        });
-        if(closestDamagedStructure) {
-            tower.repair(closestDamagedStructure);
-        }
-
-        var closestHostile = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
-        if(closestHostile) {
-            tower.attack(closestHostile);
-        }
-    };
-*/
+custom.functions.system.memCleanup();
 
 //Call the Overwatch function to spawn new units if needed
-Overwatch();
+Overwatch.units();
 
 //Call the Governor function which governs the behaviour of all units
 Governor();
 
+//import report from "consoleCommands";
+//console.log(custom.variables.economy.harvestLevel('Origin') + ' - Harvest level at Origin');
+//console.log(custom.variables.economy.unitBuildEnergy('Origin') + ' - Unit build energy at Origin');
+
+
+
+try {
+    //console.log(unitInfo.harvester.parts2());
+} catch (e) {
+    console.log("Didn't work.");
+    console.log("Error details:");
+    console.log(e.message)
 }
+
+};
