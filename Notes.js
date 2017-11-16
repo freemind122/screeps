@@ -18,5 +18,12 @@ NOTES ON DISCOVERIES
     attribute as a function, however, you may have multiple functions as 
     attributes of the same variable
 
-
-
+-   Part costs:
+        MOVE            -   50      1 move part counteracts the weight of 1 other part
+        WORK            -   100
+        CARRY           -   50      carry parts only count for weight when full
+        ATTACK          -   80
+        RANGED_ATTACK   -   150
+        HEAL            -   250
+        TOUGH           -   10
+        CLAIM           -   600
