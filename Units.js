@@ -15,7 +15,11 @@ var unitInfo = {
     harvester : {
         parts : function() {
             var arr = new Array();
-            var enCap = Game.spawns['Origin'].room.energyCapacityAvailable;
+            var enCap = Game.spawns['Origin'].room.energyCapacityAvailable
+            if (_.filter(Game.creeps,(creep) => creep.memory.role == unit).length < 1)
+            {
+            			enCap = Game.spawns['Origin'].room.energyAvilable;
+            }
             var workParts = Math.floor((enCap / 2.5) / 100);
             var moveParts = Math.floor((enCap / 2.5) / 50);
             var carryParts = Math.floor((enCap / 5) / 50);
