@@ -32,7 +32,7 @@ Governor();
 
 try {
     //hiyo peeps testing woo
-    console.log(unitInfo.harvester.parts());
+    console.log(Game.spawns['Origin'].room.energyAvilable);
 } catch (e) {
     console.log("Didn't work.");
     console.log("Error details:");
