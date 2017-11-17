@@ -32,7 +32,7 @@ Governor();
 
 try {
     //hiyo peeps testing woo
-    console.log(Game.spawns['Origin'].room.energyAvilable);
+    console.log(Game.spawns['Origin'].room.energyAvailable);
 } catch (e) {
     console.log("Didn't work.");
     console.log("Error details:");
