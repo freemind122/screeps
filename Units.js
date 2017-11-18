@@ -14,6 +14,9 @@ var unitInfo = {
     
     harvester : {
         parts : function() {
+        if (Game.spawns['Origin'].room.energyAvailable < 301) {
+        return [WORK,CARRY,MOVE];
+        };
             var arr = new Array();
             var enCap = Game.spawns['Origin'].room.energyCapacityAvailable
             if (_.filter(Game.creeps,(creep) => creep.memory.role == unit).length < 1)
