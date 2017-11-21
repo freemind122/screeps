@@ -13,7 +13,15 @@ var custom = {
     variables : {
         economy: {
             harvestLevel : function (spawn) {
-                return Game.spawns[spawn].room.find(FIND_SOURCES).length;
+                return Game.spawns[spawn].room.find(FIND_SOURCES).length * 2;
+            },
+            buildLevel : function (spawn) {
+                var buildingSites = Game.spawns[spawn].room.find(FIND_MY_CONSTRUCTION_SITES).length;
+                return Math.ceil(buildingSites / 4);
+            },
+            upgradeLevel : function (spawn) {
+                var controllerLevel = Game.spawns[spawn].room.controller.level;
+                return controllerLevel;
             },
             unitBuildEnergy : function (spawn) {
                 return Game.spawns[spawn].room.energyCapacityAvailable;
