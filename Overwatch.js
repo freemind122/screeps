@@ -18,16 +18,21 @@ var Overwatch = {
             custom.functions.units.make('Origin','harvester');
         }
         else {
-            if (custom.variables.units.num('builder') < 1 * custom.variables.economy.buildLevel('Origin')) {
-                custom.functions.units.make('Origin','builder');
+            if(custom.variables.units.num('harvester2') < 1 * custom.variables.economy.harvestLevel('Origin')) {
+                custom.functions.units.make('Origin','harvester2');
             }
             else {
-                if (custom.variables.units.num('upgrader') < 1 * custom.variables.economy.upgradeLevel('Origin')) {
-                    custom.functions.units.make('Origin','upgrader');
+                if (custom.variables.units.num('builder') < 1 * custom.variables.economy.buildLevel('Origin')) {
+                    custom.functions.units.make('Origin','builder');
                 }
                 else {
-                    if(custom.variables.units.num('mover') < 1) {
-                        custom.functions.units.make('Origin','mover');
+                    if (custom.variables.units.num('upgrader') < 1 * custom.variables.economy.upgradeLevel('Origin')) {
+                        custom.functions.units.make('Origin','upgrader');
+                    }
+                    else {
+                        if(custom.variables.units.num('mover') < 1) {
+                            custom.functions.units.make('Origin','mover');
+                        }
                     }
                 }
             }
