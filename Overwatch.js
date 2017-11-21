@@ -18,11 +18,11 @@ var Overwatch = {
             custom.functions.units.make('Origin','harvester');
         }
         else {
-            if (custom.variables.units.num('builder') < 2) {
+            if (custom.variables.units.num('builder') < 1 * custom.variables.economy.buildLevel('Origin')) {
                 custom.functions.units.make('Origin','builder');
             }
             else {
-                if (custom.variables.units.num('upgrader') < 2) {
+                if (custom.variables.units.num('upgrader') < 1 * custom.variables.economy.upgradeLevel('Origin')) {
                     custom.functions.units.make('Origin','upgrader');
                 }
                 else {
