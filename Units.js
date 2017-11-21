@@ -12,7 +12,7 @@
 
 var unitInfo = {
     
-    harvester : {
+     harvester2 : {
         parts : function() {
             var arr = new Array();
             var enCap = Game.spawns['Origin'].room.energyAvailable
@@ -31,13 +31,15 @@ var unitInfo = {
                 arr.push(MOVE);
                 moveParts--;
             }
+            if (arr.length >= 3) {
             return arr;
+            };
         },
         role : function(creep) {
             if(creep.carry.energy < creep.carryCapacity) {
                 var sources = creep.room.find(FIND_SOURCES);
-                if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources[0]);
+                if(creep.harvest(sources[1]) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(sources[1]);
                 }
             }
             else {
@@ -61,6 +63,57 @@ var unitInfo = {
         required : 2,
     },
     
+    harvester : {
+        parts : function() {
+            var arr = new Array();
+            var enCap = Game.spawns['Origin'].room.energyAvailable
+            var workParts = Math.floor((enCap / 2.5) / 100);
+            var moveParts = Math.floor((enCap / 2.5) / 50);
+            var carryParts = Math.floor((enCap / 5) / 50);
+            while (workParts > 0) {
+                arr.push(WORK);
+                workParts--;
+            }
+            while (carryParts > 0) {
+                arr.push(CARRY);
+                carryParts--;
+            }
+            while (moveParts > 0) {
+                arr.push(MOVE);
+                moveParts--;
+            }
+            if (arr.length >= 3) {
+            return arr;
+            };
+        },
+        role : function(creep) {
+            if(creep.carry.energy < creep.carryCapacity) {
+                var sources = creep.room.find(FIND_SOURCES);
+                if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(sources[0]);
+                };
+            }
+            else {
+                var targets = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
+                        return (
+                            structure.structureType == STRUCTURE_EXTENSION ||
+                            structure.structureType == STRUCTURE_SPAWN ||
+                            structure.structureType == STRUCTURE_TOWER ||
+                            structure.structureType == STRUCTURE_CONTAINER
+                            ) && structure.energy < structure.energyCapacity;
+                    }
+                });
+                if(targets.length > 0) {
+                    if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
+                        creep.moveTo(targets[0]);
+                    };
+                };
+            };
+        },
+        required : 2,
+    },
+    
     builder : {
         parts : function() {
             var arr = new Array();
@@ -80,7 +133,9 @@ var unitInfo = {
                 arr.push(MOVE);
                 moveParts--;
             }
+            if (arr.length >= 3) {
             return arr;
+            };
         },
         role : function(creep) {
             //if the creep is in building mode and it is carrying no energy
@@ -162,7 +217,9 @@ var unitInfo = {
                 arr.push(MOVE);
                 moveParts--;
             }
+            if (arr.length >= 3) {
             return arr;
+            };
         },
         role : function(creep) {
             if(creep.memory.upgrading && creep.carry.energy == 0) {
@@ -207,7 +264,9 @@ var unitInfo = {
                 arr.push(MOVE);
                 moveParts--;
             }
+            if (arr.length >= 3) {
             return arr;
+            };
         },
         role : function(creep) {
             if(creep.carry.energy < creep.carryCapacity) {
