@@ -13,7 +13,7 @@ var custom = {
     variables : {
         economy: {
             harvestLevel : function (spawn) {
-                return Game.spawns[spawn].room.find(FIND_SOURCES).length * 2;
+                return Game.spawns[spawn].room.find(FIND_SOURCES).length;
             },
             buildLevel : function (spawn) {
                 var buildingSites = Game.spawns[spawn].room.find(FIND_MY_CONSTRUCTION_SITES).length;
