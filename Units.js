@@ -117,7 +117,7 @@ var unitInfo = {
     builder : {
         parts : function() {
             var arr = new Array();
-            var enCap = Game.spawns['Origin'].room.energyCapacityAvailable;
+            var enCap = Game.spawns['Origin'].room.energyAvailable;
             var workParts = Math.floor((enCap / 2.5) / 100);
             var moveParts = Math.floor((enCap / 2.5) / 50);
             var carryParts = Math.floor((enCap / 5) / 50);
@@ -201,7 +201,7 @@ var unitInfo = {
     upgrader : {
         parts : function() {
             var arr = new Array();
-            var enCap = Game.spawns['Origin'].room.energyCapacityAvailable;
+            var enCap = Game.spawns['Origin'].room.energyAvailable;
             var workParts = Math.floor((enCap / 2.5) / 100);
             var moveParts = Math.floor((enCap / 2.5) / 50);
             var carryParts = Math.floor((enCap / 5) / 50);
@@ -248,7 +248,7 @@ var unitInfo = {
     mover : {
         parts : function() {
             var arr = new Array();
-            var enCap = Game.spawns['Origin'].room.energyCapacityAvailable;
+            var enCap = Game.spawns['Origin'].room.energyAvailable;
             var workParts = Math.floor((enCap / 2.5) / 100);
             var moveParts = Math.floor((enCap / 2.5) / 50);
             var carryParts = Math.floor((enCap / 5) / 50);
