@@ -30,7 +30,7 @@ var Overwatch = {
                         custom.functions.units.make('Origin','upgrader');
                     }
                     else {
-                        if(custom.variables.units.num('mover') < 1) {
+                        if(custom.variables.units.num('mover') < 0) {
                             custom.functions.units.make('Origin','mover');
                         }
                     }
