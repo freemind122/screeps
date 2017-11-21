@@ -14,33 +14,20 @@ var harvester = require('Units');
 var builder = require('Units');
 var upgrader = require('Units');
 
-
+var unitInfo = require('Units');
 
 function Governor () {
 
     
     
-    
+//    for(var i = 0, len = Game.creeps.length; i < len; i++) {
+//        var creep = Game.creeps[i];
+//        eval("unitInfo." + creep.memory.role + ".role(creep)");
+//    };
     
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
-        if(creep.memory.role == 'harvester') {
-            roleHarvester.run(creep);
-        }
-        if(creep.memory.role == 'upgrader') {
-            roleUpgrader.run(creep);
-        }
-        if(creep.memory.role == 'builder') {
-            try {
-                builder.role(creep);
-                
-            }
-            catch (err) {
-                roleBuilder.run(creep);
-                //console.log(Error.message);
-            };
-            
-        }
+        eval("unitInfo." + creep.memory.role + ".role(creep)");
     };
     
     var tower = Game.getObjectById('TOWER_ID');
