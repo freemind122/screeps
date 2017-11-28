@@ -88,10 +88,10 @@ unitInfo = {
             var fullOfEnergy = Boolean(creep.carry.energy < creep.carryCapacity);
             var sources = creep.room.find(FIND_SOURCES);
             var structures = creep.room.find(FIND_STRUCTURES);
-            var targets = structures.filter(structure.structureType === STRUCTURE_EXTENSION ||
-                structure.structureType === STRUCTURE_SPAWN ||
-                structure.structureType === STRUCTURE_TOWER ||
-                structure.structureType === STRUCTURE_CONTAINER) && structure.energy < structure.energyCapacity;
+            var targets = structures.filter(structures.structureType === STRUCTURE_EXTENSION ||
+                structures.structureType === STRUCTURE_SPAWN ||
+                structures.structureType === STRUCTURE_TOWER ||
+                structures.structureType === STRUCTURE_CONTAINER) && structures.energy < structures.energyCapacity;
 
             if (fullOfEnergy) {
                 if (creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
@@ -134,13 +134,13 @@ unitInfo = {
         },
         role: function (creep) {
             //if the creep is in building mode and it is carrying no energy
-            if (creep.memory.building && creep.carry.energy == 0) {
+            if (creep.memory.building && creep.carry.energy === 0) {
                 //take the creep out of building mode
                 creep.memory.building = false;
                 creep.say('harvesting');
             }
             //if the creep is full of energy then set its building variable to true
-            if (!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
+            if (!creep.memory.building && creep.carry.energy === creep.carryCapacity) {
                 creep.memory.building = true;
                 creep.say('building');
             }
@@ -151,7 +151,7 @@ unitInfo = {
                 //if there is more than 0 building sites
                 if (targets.length > 0) {
                     //and if the target is not in range
-                    if (creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
+                    if (creep.build(targets[0]) === ERR_NOT_IN_RANGE) {
                         //then move to the target
                         creep.moveTo(targets[0]);
                     }
@@ -161,11 +161,11 @@ unitInfo = {
                     //set the creep's target to structure types that require power
                     var targets = creep.room.find(FIND_STRUCTURES, {
                             filter: (structure) = > {
-                            return(structure.structureType == STRUCTURE_EXTENSION ||
-                        structure.structureType == STRUCTURE_SPAWN ||
-                        structure.structureType == STRUCTURE_STORAGE ||
-                        structure.structureType == STRUCTURE_TOWER ||
-                        structure.structureType == STRUCTURE_CONTAINER
+                            return(structure.structureType === STRUCTURE_EXTENSION ||
+                        structure.structureType === STRUCTURE_SPAWN ||
+                        structure.structureType === STRUCTURE_STORAGE ||
+                        structure.structureType === STRUCTURE_TOWER ||
+                        structure.structureType === STRUCTURE_CONTAINER
                     ) && structure.energy < structure.energyCapacity;
                 }
                 })
