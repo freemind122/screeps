@@ -40,10 +40,10 @@ unitInfo = {
             var fullOfEnergy = Boolean(creep.carry.energy < creep.carryCapacity);
             var sources = creep.room.find(FIND_SOURCES);
             var structures = creep.room.find(FIND_STRUCTURES);
-            var targets = structures.filter(structure.structureType === STRUCTURE_EXTENSION ||
-                structure.structureType === STRUCTURE_SPAWN ||
-                structure.structureType === STRUCTURE_TOWER ||
-                structure.structureType === STRUCTURE_CONTAINER) && structure.energy < structure.energyCapacity;
+            var targets = structures.filter(structures.structureType === STRUCTURE_EXTENSION ||
+                structures.structureType === STRUCTURE_SPAWN ||
+                structures.structureType === STRUCTURE_TOWER ||
+                structures.structureType === STRUCTURE_CONTAINER) && structures.energy < structures.energyCapacity;
 
             if (fullOfEnergy) {
                 if (creep.harvest(sources[1]) === ERR_NOT_IN_RANGE) {
