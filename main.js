@@ -29,7 +29,6 @@ Governor();
 //console.log(custom.variables.economy.unitBuildEnergy('Origin') + ' - Unit build energy at Origin');
 
 
-
 try {
     //hiyo peeps testing woo
     console.log(Game.spawns['Origin'].room.energyAvailable);
