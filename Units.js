@@ -160,7 +160,7 @@ unitInfo = {
                 else {
                     //set the creep's target to structure types that require power
                     var targets = creep.room.find(FIND_STRUCTURES, {
-                            filter: (structure) = > {
+                            filter: (structure) => {
                             return(structure.structureType === STRUCTURE_EXTENSION ||
                         structure.structureType === STRUCTURE_SPAWN ||
                         structure.structureType === STRUCTURE_STORAGE ||
@@ -273,7 +273,7 @@ unitInfo = {
             }
             else {
                 var targets = creep.room.find(FIND_STRUCTURES, {
-                        filter: (structure) = > {
+                        filter: (structure) => {
                         return(structure.structureType == STRUCTURE_STORAGE ||
                     structure.structureType == STRUCTURE_CONTAINER);
             }
