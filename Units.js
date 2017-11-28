@@ -11,8 +11,8 @@
 //Must be called on in the following format: run: List([Unit Type]);
 
 var unitInfo = {
-    
-     harvester2 : {
+
+    harvester2 : {
         parts : function() {
             var arr = new Array();
             var enCap = Game.spawns['Origin'].room.energyAvailable
@@ -32,7 +32,7 @@ var unitInfo = {
                 moveParts--;
             }
             if (arr.length >= 3) {
-            return arr;
+                return arr;
             };
         },
         role : function(creep) {
@@ -44,15 +44,15 @@ var unitInfo = {
             }
             else {
                 var targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
+                        filter: (structure) => {
                         return (
                             structure.structureType == STRUCTURE_EXTENSION ||
-                            structure.structureType == STRUCTURE_SPAWN ||
-                            structure.structureType == STRUCTURE_TOWER ||
-                            structure.structureType == STRUCTURE_CONTAINER
-                            ) && structure.energy < structure.energyCapacity;
-                    }
-                });
+                    structure.structureType == STRUCTURE_SPAWN ||
+                    structure.structureType == STRUCTURE_TOWER ||
+                    structure.structureType == STRUCTURE_CONTAINER
+                ) && structure.energy < structure.energyCapacity;
+            }
+            });
                 if(targets.length > 0) {
                     if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(targets[0]);
@@ -62,7 +62,7 @@ var unitInfo = {
         },
         required : 2,
     },
-    
+
     harvester : {
         parts : function() {
             var arr = new Array();
@@ -83,7 +83,7 @@ var unitInfo = {
                 moveParts--;
             }
             if (arr.length >= 3) {
-            return arr;
+                return arr;
             };
         },
         role : function(creep) {
@@ -95,15 +95,15 @@ var unitInfo = {
             }
             else {
                 var targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
+                        filter: (structure) => {
                         return (
                             structure.structureType == STRUCTURE_EXTENSION ||
-                            structure.structureType == STRUCTURE_SPAWN ||
-                            structure.structureType == STRUCTURE_TOWER ||
-                            structure.structureType == STRUCTURE_CONTAINER
-                            ) && structure.energy < structure.energyCapacity;
-                    }
-                });
+                    structure.structureType == STRUCTURE_SPAWN ||
+                    structure.structureType == STRUCTURE_TOWER ||
+                    structure.structureType == STRUCTURE_CONTAINER
+                ) && structure.energy < structure.energyCapacity;
+            }
+            });
                 if(targets.length > 0) {
                     if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(targets[0]);
@@ -113,7 +113,7 @@ var unitInfo = {
         },
         required : 2,
     },
-    
+
     builder : {
         parts : function() {
             var arr = new Array();
@@ -134,26 +134,26 @@ var unitInfo = {
                 moveParts--;
             }
             if (arr.length >= 3) {
-            return arr;
+                return arr;
             };
         },
         role : function(creep) {
             //if the creep is in building mode and it is carrying no energy
-	        if(creep.memory.building && creep.carry.energy == 0) {
-	            //take the creep out of building mode
+            if(creep.memory.building && creep.carry.energy == 0) {
+                //take the creep out of building mode
                 creep.memory.building = false;
                 creep.say('harvesting');
-	        }
-	        //if the creep is full of energy then set its building variable to true
-	        if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
-	            creep.memory.building = true;
-	            creep.say('building');
-	        }
+            }
+            //if the creep is full of energy then set its building variable to true
+            if(!creep.memory.building && creep.carry.energy == creep.carryCapacity) {
+                creep.memory.building = true;
+                creep.say('building');
+            }
             //if the creep is set to build
-	        if(creep.memory.building) {
-	            //set its target list to construction sites
-	            var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
-	            //if there is more than 0 building sites
+            if(creep.memory.building) {
+                //set its target list to construction sites
+                var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+                //if there is more than 0 building sites
                 if(targets.length > 0) {
                     //and if the target is not in range
                     if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
@@ -165,15 +165,15 @@ var unitInfo = {
                 else {
                     //set the creep's target to structure types that require power
                     var targets = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_EXTENSION ||
-                                structure.structureType == STRUCTURE_SPAWN ||
-                                structure.structureType == STRUCTURE_STORAGE ||
-                                structure.structureType == STRUCTURE_TOWER ||
-                                structure.structureType == STRUCTURE_CONTAINER
-                                ) && structure.energy < structure.energyCapacity;
-                        }
-                    });
+                            filter: (structure) => {
+                            return (structure.structureType == STRUCTURE_EXTENSION ||
+                        structure.structureType == STRUCTURE_SPAWN ||
+                        structure.structureType == STRUCTURE_STORAGE ||
+                        structure.structureType == STRUCTURE_TOWER ||
+                        structure.structureType == STRUCTURE_CONTAINER
+                    ) && structure.energy < structure.energyCapacity;
+                }
+                });
                     //if there are more than 0 structures requiring energy
                     if(targets.length > 0) {
                         //and if the closest structure is not in range
@@ -183,12 +183,12 @@ var unitInfo = {
                         }
                     }
                 };
-	        }
-	        //if the creep is not set to build
-	        else {
-	            //set the creep's target list to sources
-	            var targets = creep.room.find(FIND_SOURCES);
-	            //if the closest target is not in range
+            }
+            //if the creep is not set to build
+            else {
+                //set the creep's target list to sources
+                var targets = creep.room.find(FIND_SOURCES);
+                //if the closest target is not in range
                 if(creep.harvest(targets[0]) == ERR_NOT_IN_RANGE) {
                     //move to the target
                     creep.moveTo(targets[0]);
@@ -197,7 +197,7 @@ var unitInfo = {
         },
         required : 6,
     },
-    
+
     upgrader : {
         parts : function() {
             var arr = new Array();
@@ -218,7 +218,7 @@ var unitInfo = {
                 moveParts--;
             }
             if (arr.length >= 3) {
-            return arr;
+                return arr;
             };
         },
         role : function(creep) {
@@ -244,7 +244,7 @@ var unitInfo = {
         },
         required : 3,
     },
-    
+
     mover : {
         parts : function() {
             var arr = new Array();
@@ -265,7 +265,7 @@ var unitInfo = {
                 moveParts--;
             }
             if (arr.length >= 3) {
-            return arr;
+                return arr;
             };
         },
         role : function(creep) {
@@ -278,10 +278,10 @@ var unitInfo = {
             else {
                 var targets = creep.room.find(FIND_STRUCTURES, {
                         filter: (structure) => {
-                            return (structure.structureType == STRUCTURE_STORAGE ||
-                                    structure.structureType == STRUCTURE_CONTAINER);
-                        }
-                });
+                        return (structure.structureType == STRUCTURE_STORAGE ||
+                    structure.structureType == STRUCTURE_CONTAINER);
+            }
+            });
                 if(targets.length > 0) {
                     if(creep.transfer(targets[0], RESOURCE_ENERGY) == ERR_NOT_IN_RANGE) {
                         creep.moveTo(targets[0]);
@@ -291,7 +291,7 @@ var unitInfo = {
         },
         required : 1,
     },
-    
+
 };
 
 
