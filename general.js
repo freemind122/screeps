@@ -45,7 +45,7 @@ var custom = {
                     }
                 }
                 for (i = 0; i < plains.length; i++) {
-                    var thePlace = lookAt(plains[i]);
+                    var thePlace = source.look(plains[i]);
                     console.log(thePlace.type);
                 }
             }
