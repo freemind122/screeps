@@ -49,9 +49,14 @@ var custom = {
                     }
                 }
                 for (i = 0; i < plains.length; i++) {
-                    if (creeps.contains(plains[i])) {
-                        console.log('ha');
+                    for (i = 0; i < creeps.length; i++) {
+                        if (plains[i] === creeps[i]) {
+                            plains.remove(i)
+                        }
                     }
+                }
+                for (i = 0; i < plains.length; i++) {
+                    console.log('Clear - x:' + plains[i].x + ' y:' + plains[i].y)
                 }
             }
         }
