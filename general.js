@@ -40,7 +40,7 @@ var custom = {
                     if (terrain[i].type === 'terrain' && terrain[i].terrain === 'plain') {
                         console.log('x:' + terrain[i].x + ' y:' + terrain[i].y);
                     } else if (terrain[i].type === 'creep') {
-                        console.log('Creep: ' + terrain[i].creep.name);
+                        console.log('Creep: ' + terrain[i].creep.name + ' x:' + terrain[i].x + ' y:' + terrain[i].y);
                     }
                 }
             }
