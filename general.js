@@ -39,14 +39,16 @@ var custom = {
                 var plains = [];
                 for (i = 0; i < terrain.length; i++) {
                     if (terrain[i].type === 'terrain' && terrain[i].terrain === 'plain') {
+
                         var thispos = new RoomPosition(terrain[i].x, terrain[i].y, source.room.name);
+                        console.log(Game.room.lookAt(thispos));
                         plains.push(thispos);
                         //console.log('clear space at - x:' + terrain[i].x + ' y:' + terrain[i].y);
                     }
                 }
                 for (i = 0; i < plains.length; i++) {
-                    var thePlace = source.lookAt(plains[i]);
-                    console.log(thePlace.type);
+                    //var thePlace = source.room.lookAt(plains[i]);
+                    //console.log(thePlace.type);
                 }
             }
         }
