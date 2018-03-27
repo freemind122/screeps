@@ -36,27 +36,18 @@ var custom = {
         environment : {
             isSpawnBlocked : function(source) {
                 var terrain = source.room.lookAtArea(source.pos.y-1,source.pos.x-1,source.pos.y+1,source.pos.x+1, true);
-                var plains = [];
                 var creeps = []
                 for (i = 0; i < terrain.length; i++) {
                     if (terrain[i].type === 'terrain' && terrain[i].terrain === 'plain') {
-                        var thispos = new RoomPosition(terrain[i].x, terrain[i].y, source.room.name);
-                        plains.push(thispos);
+                        var thispos = source.room.lookAt(terrain[i].x, terrain[i].y);
+                        for (i=0; i<thispos.length; i++) {
+                            console.log(thispos[i].type)
+                        }
                         //console.log('clear space at - x:' + terrain[i].x + ' y:' + terrain[i].y);
                     } else if (terrain[i].type === 'creep') {
                         thispos = new RoomPosition(terrain[i].x, terrain[i].y, source.room.name);
                         creeps.push(thispos)
                     }
-                }
-                for (i = 0; i < plains.length; i++) {
-                    for (i = 0; i < creeps.length; i++) {
-                        if (plains[i] === creeps[i]) {
-                            plains.remove(i)
-                        }
-                    }
-                }
-                for (i = 0; i < plains.length; i++) {
-                    console.log('Clear - x:' + plains[i].x + ' y:' + plains[i].y)
                 }
             }
         }
