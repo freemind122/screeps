@@ -35,7 +35,7 @@ var custom = {
         },
         environment : {
             isSpawnBlocked : function(source) {
-                var terrain = source.room.lookAtArea(source.pos.y-2,source.pos.x-2,source.pos.y+2,source.pos.x+2, true);
+                var terrain = source.room.lookAtArea(source.pos.y-1,source.pos.x-1,source.pos.y+1,source.pos.x+1, true);
                 console.log(terrain[0].type);
                 console.log(terrain[1].type);
                 console.log(terrain[2].type);
