@@ -36,12 +36,17 @@ var custom = {
         environment : {
             isSpawnBlocked : function(source) {
                 var terrain = source.room.lookAtArea(source.pos.y-1,source.pos.x-1,source.pos.y+1,source.pos.x+1, true);
+                var plains = [];
                 for (i = 0; i < terrain.length; i++) {
-                    if (terrain[i].type === 'terrain' && terrain[i].terrain === 'plain' && terrain[i].creep !== undefined) {
-                        console.log('Creep - x:' + terrain[i].creep.name + terrain[i].x + ' y:' + terrain[i].y);
-                    } else if (terrain[i].type === 'terrain' && terrain[i].terrain === 'plain') {
-                        console.log('clear space - x:' + terrain[i].x + ' y:' + terrain[i].y);
+                    if (terrain[i].type === 'terrain' && terrain[i].terrain === 'plain') {
+                        var thispos = new RoomPosition(terrain[i].x, terrain[i].y, source.room.name);
+                        plains.push(thispos);
+                        //console.log('clear space at - x:' + terrain[i].x + ' y:' + terrain[i].y);
                     }
+                }
+                for (i = 0; i < plains.length; i++) {
+                    var thePlace = lookAt(plains[i]);
+                    console.log(thePlace.type);
                 }
             }
         }
