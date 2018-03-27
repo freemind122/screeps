@@ -31,6 +31,7 @@ Governor();
 
 try {
     //hiyo peeps testing woo
+    custom.variables.environment.isSpawnBlocked(Game.spawns['Origin'].room.find(FIND_SOURCES)[0])
     console.log(Game.spawns['Origin'].room.energyAvailable);
 } catch (e) {
     console.log("Didn't work.");
