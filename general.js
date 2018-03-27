@@ -38,7 +38,7 @@ var custom = {
                 var terrain = source.room.lookAtArea(source.pos.y-1,source.pos.x-1,source.pos.y+1,source.pos.x+1, true);
                 for (i = 0; i < terrain.length; i++) {
                     if (terrain[i].type === 'terrain' && terrain[i].terrain === 'plain' && terrain[i].creep === undefined) {
-                        console.log('x:' + terrain[i].x + ' y:' + terrain[i].y + ' clear');
+                        console.log('clear space - x:' + terrain[i].x + ' y:' + terrain[i].y);
                     } else if (terrain[i].type === 'terrain' && terrain[i].terrain === 'plain' && terrain[i].creep !== undefined) {
                         console.log('Creep: ' + terrain[i].creep.name + ' x:' + terrain[i].x + ' y:' + terrain[i].y);
                     }
