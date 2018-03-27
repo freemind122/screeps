@@ -37,8 +37,10 @@ var custom = {
             isSpawnBlocked : function(source) {
                 var terrain = source.room.lookAtArea(source.pos.y-1,source.pos.x-1,source.pos.y+1,source.pos.x+1, true);
                 for (i = 0; i < terrain.length; i++) {
-                    if (terrain[i].type === 'terrain' && terain[i].terrain === 'plain') {
-                        console.log('x:' + terrain[i].x + ' y:' + terrain[i].y);
+                    if (terrain[i].type === 'terrain') {
+                        if (terain[i].terrain === 'plain') {
+                            console.log('x:' + terrain[i].x + ' y:' + terrain[i].y);
+                        }
                     } else if (terrain[i].type === 'creep') {
                         console.log('Creep: ' + terrain[i].creep.name);
                     }
