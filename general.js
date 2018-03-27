@@ -38,7 +38,7 @@ var custom = {
                 var area = source.room.lookForAtArea(LOOK_TERRAIN, source.pos.y-1,source.pos.x-1,source.pos.y+1,source.pos.x+1, true);
                 for (i = 0; i < area.length; i++) {
                     console.log(area[i].type);
-                    if ((area[i].terrain === 'plain') && (source.room.lookforat(LOOK_CREEPS, area[i].x, area[i].y) === undefined, true)) {
+                    if (area[i].terrain === 'plain' && source.room.lookforat(LOOK_CREEPS, area[i].x, area[i].y, true) === undefined) {
                         console.log('clear space at - x:' + area[i].x + ' y:' + area[i].y);
                     }
                 }
