@@ -30,7 +30,6 @@ var env = require('Environment'),
                 workParts = Math.floor((enCap / 2.5) / 100),
                 moveParts = Math.floor((enCap / 2.5) / 50),
                 carryParts = Math.floor((enCap / 5) / 50);
-            console.log(enCap);
             while (workParts > 0) {
                 arr.push(WORK);
                 workParts--;

@@ -19,7 +19,7 @@ Overwatch.behaviour();
 //console.log(custom.variables.economy.unitBuildEnergy('Origin') + ' - Unit build energy at Origin');
 
 try {
-    console.log()
+    console.log(Game.spawns['Origin'].room.energyAvailable)
 } catch (e) {
     console.log("Didn't work.");
     console.log("Error details:");
