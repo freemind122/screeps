@@ -43,7 +43,8 @@ var custom = {
                         sources.terrain === 'swamp'
                     )
                 });
-                if (source.Room.lookForAt(LOOK_CREEPS,area[0].x,area[0].y) !== undefined) {
+                var test = source.Room.lookForAt(LOOK_CREEPS,area[0].x,area[0].y)
+                if (test[0] !== undefined) {
                     console.log('Creep in empty space - x:' + area[0].x + ' y:' + area[0].y)
                 }
                 for (i = 0; i < area.length; i++) {
