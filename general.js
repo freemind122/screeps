@@ -51,7 +51,7 @@ var custom = {
                         console.log('Empty space - x:' + area[0].x + ' y:' + area[0].y);
                     }
                 }
-                return (emptySpaces > 0);
+                return (emptySpaces === 0);
             }
         }
     },
