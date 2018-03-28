@@ -8,34 +8,20 @@
  */
 var custom = require ('general');
 
-var harvester = require ('Units'),
-    builder = require ('Units'),
-    upgrader = require ('Units');
+var unitInfo = require ('Units');
 
 var Overwatch = {
     units : function() {
         if (custom.variables.units.num('harvester') < 1 * custom.variables.economy.harvestLevel('Origin')) {
-            custom.functions.units.make('Origin','harvester');
-        }
-        else {
-            if(custom.variables.units.num('harvester2') < 1 * custom.variables.economy.harvestLevel('Origin')) {
-                custom.functions.units.make('Origin','harvester2');
-            }
-            else {
-                if (custom.variables.units.num('builder') < 1 * custom.variables.economy.buildLevel('Origin')) {
-                    custom.functions.units.make('Origin','builder');
-                }
-                else {
-                    if (custom.variables.units.num('upgrader') < 1 * custom.variables.economy.upgradeLevel('Origin')) {
-                        custom.functions.units.make('Origin','upgrader');
-                    }
-                    else {
-                        if(custom.variables.units.num('mover') < 0) {
-                            custom.functions.units.make('Origin','mover');
-                        }
-                    }
-                }
-            }
+            unitInfo.harvester.make('Origin');
+        } else if (custom.variables.units.num('harvester2') < 1 * custom.variables.economy.harvestLevel('Origin')) {
+            unitInfo.harvester2.make('Origin');
+        } else if (custom.variables.units.num('builder') < 1 * custom.variables.economy.buildLevel('Origin')) {
+            unitInfo.builder.make('Origin');
+        } else if (custom.variables.units.num('upgrader') < 1 * custom.variables.economy.upgradeLevel('Origin')) {
+            unitInfo.upgrader.make('Origin');
+        } else if(custom.variables.units.num('mover') < 0) {
+            unitInfo.mover.make('Origin');
         }
     }
 };
