@@ -14,7 +14,7 @@ function Governor () {
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
         eval("unitInfo." + creep.memory.role + ".role(creep)");
-    };
+    }
     
     var tower = Game.getObjectById('TOWER_ID');
     if(tower) {

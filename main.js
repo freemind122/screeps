@@ -1,6 +1,4 @@
 
-var unitInfo = require('Units');
-
 //Function for listing out all active units of a specific type
 var custom = require('general');
 

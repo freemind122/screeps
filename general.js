@@ -48,11 +48,10 @@ var custom = {
                         sources.terrain === 'swamp'
                     )
                 });
-                for (i = 0; i < area.length; i++) {
+                for (var i = 0; i < area.length; i++) {
                     var tile = source.room.lookForAt(LOOK_CREEPS,area[i].x,area[i].y);
                     if (tile[0] === undefined) {
                         emptySpaces++;
-                        console.log('Empty space - x:' + area[0].x + ' y:' + area[0].y);
                     }
                 }
                 return (emptySpaces === 0);

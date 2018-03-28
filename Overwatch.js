@@ -8,9 +8,9 @@
  */
 var custom = require ('general');
 
-var harvester = require ('Units')
-var builder = require ('Units')
-var upgrader = require ('Units')
+var harvester = require ('Units'),
+    builder = require ('Units'),
+    upgrader = require ('Units');
 
 var Overwatch = {
     units : function() {
@@ -38,7 +38,7 @@ var Overwatch = {
             }
         }
     }
-}
+};
 
 
 
