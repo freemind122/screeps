@@ -44,6 +44,7 @@ var custom = {
                     )
                 });
                 var test = source.Room.lookForAt(LOOK_CREEPS,area[0].x,area[0].y);
+                console.log('1')
                 if (test[0] !== undefined) {
                     console.log('Creep in empty space - x:' + area[0].x + ' y:' + area[0].y)
                 }
