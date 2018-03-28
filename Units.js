@@ -10,7 +10,7 @@
 //Function to return a list of operational units of a certain type when the unit type is passed into it as a string
 //Must be called on in the following format: run: List([Unit Type]);
 
-//hello
+var custom = require('general');
 
 var unitInfo = {
 
@@ -40,8 +40,10 @@ var unitInfo = {
         role : function(creep) {
             if(creep.carry.energy < creep.carryCapacity) {
                 var sources = creep.room.find(FIND_SOURCES);
-                if(creep.harvest(sources[1]) === ERR_NOT_IN_RANGE) {
+                if(creep.harvest(sources[1]) === ERR_NOT_IN_RANGE && !custom.variables.environment.isSpawnBlocked(sources[1])) {
                     creep.moveTo(sources[1]);
+                } else {
+                    creep.moveTo(Game.flags.Rally)
                 }
             } else {
                 var targets = creep.room.find(FIND_STRUCTURES).filter(function(structure) {
@@ -90,8 +92,10 @@ var unitInfo = {
         role : function(creep) {
             if(creep.carry.energy < creep.carryCapacity) {
                 var sources = creep.room.find(FIND_SOURCES);
-                if(creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
+                if(creep.harvest(sources[0]) === ERR_NOT_IN_RANGE && !custom.variables.environment.isSpawnBlocked(sources[0])) {
                     creep.moveTo(sources[0]);
+                } else {
+                    creep.moveTo(Game.flags.Rally)
                 }
             }
             else {
@@ -191,9 +195,11 @@ var unitInfo = {
                 //set the creep's target list to sources
                 var targets = creep.room.find(FIND_SOURCES);
                 //if the closest target is not in range
-                if(creep.harvest(targets[0]) === ERR_NOT_IN_RANGE) {
+                if(creep.harvest(targets[0]) === ERR_NOT_IN_RANGE && !custom.variables.environment.isSpawnBlocked(targets[0])) {
                     //move to the target
                     creep.moveTo(targets[0]);
+                }else {
+                    creep.moveTo(Game.flags.Rally)
                 }
             }
         },
@@ -273,8 +279,10 @@ var unitInfo = {
         role : function(creep) {
             if(creep.carry.energy < creep.carryCapacity) {
                 var sources = creep.room.find(FIND_SOURCES);
-                if(creep.harvest(sources[1]) === ERR_NOT_IN_RANGE) {
+                if(creep.harvest(sources[1]) === ERR_NOT_IN_RANGE && !custom.variables.environment.isSpawnBlocked(sources[1])) {
                     creep.moveTo(sources[1]);
+                } else {
+                    creep.moveTo(Game.flags.Rally)
                 }
             }
             else {
