@@ -60,11 +60,13 @@ var env = require('Environment'),
         role : function(creep) {
             if(creep.carry.energy < creep.carryCapacity) {
                 var sources = creep.room.find(FIND_SOURCES);
-                console.log('Creep range to source 1: '+ creep.pos.getRangeTo(sources[1].pos))
-                if(creep.harvest(sources[1]) === ERR_NOT_IN_RANGE && !env.isBlocked(sources[1])) {
-                    creep.moveTo(sources[1]);
-                } else {
+                console.log('Creep range to source 1: ' + creep.pos.getRangeTo(sources[1].pos));
+                if (creep.pos.getRangeTo(sources[1].pos) === 1) {
+                    creep.harvest(sources[1])
+                } else if (env.isBlocked(sources[1])) {
                     creep.moveTo(Game.flags.Rally)
+                } else {
+                    creep.moveTo(sources[1])
                 }
             } else {
                 var targets = creep.room.find(FIND_STRUCTURES).filter(function(structure) {
