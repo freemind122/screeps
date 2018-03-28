@@ -63,7 +63,7 @@ var env = require('Environment'),
                 if (creep.pos.getRangeTo(sources[1].pos) === 1) {
                     creep.harvest(sources[1])
                 } else if (env.isBlocked(sources[1])) {
-                    creep.moveTo(Game.flags.Rally)
+                    creep.moveTo(Game.flags.Harvest2)
                 } else {
                     creep.moveTo(sources[1])
                 }
@@ -81,7 +81,7 @@ var env = require('Environment'),
                         creep.moveTo(targets[0]);
                     }
                 } else {
-                    creep.moveTo(Game.flags.Rally)
+                    creep.moveTo(Game.flags.Harvest2)
                 }
             }
         },
@@ -138,7 +138,7 @@ var env = require('Environment'),
                 if (creep.pos.getRangeTo(sources[0].pos) === 1) {
                     creep.harvest(sources[0])
                 } else if (env.isBlocked(sources[0])) {
-                    creep.moveTo(Game.flags.Rally)
+                    creep.moveTo(Game.flags.Harvest1)
                 } else {
                     creep.moveTo(sources[0])
                 }
@@ -157,7 +157,7 @@ var env = require('Environment'),
                         creep.moveTo(targets[0]);
                     }
                 } else {
-                    creep.moveTo(Game.flags.Rally)
+                    creep.moveTo(Game.flags.Harvest1)
                 }
             }
         },
