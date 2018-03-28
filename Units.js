@@ -39,7 +39,7 @@ var unitInfo = {
         },
         make : function (spawn) {
             console.log('Attempting to spawn new harvester2 at ' + spawn);
-            var newUnit = Game.spawns[spawn].createCreep(this.harvester2.parts(), undefined, {role: 'harvester2'});
+            var newUnit = Game.spawns[spawn].createCreep(this.parts(), undefined, {role: 'harvester2'});
             if (newUnit < 0) {
                 return 'low energy';
             }
@@ -102,7 +102,7 @@ var unitInfo = {
         },
         make : function (spawn) {
             console.log('Attempting to spawn new harvester at ' + spawn);
-            var newUnit = Game.spawns[spawn].createCreep(this.harvester.parts(), undefined, {role: 'harvester'});
+            var newUnit = Game.spawns[spawn].createCreep(this.parts(), undefined, {role: 'harvester'});
             if (newUnit < 0) {
                 return 'low energy';
             }
@@ -166,7 +166,7 @@ var unitInfo = {
         },
         make : function (spawn) {
             console.log('Attempting to spawn new builder at ' + spawn);
-            var newUnit = Game.spawns[spawn].createCreep(this.builder.parts(), undefined, {role: 'builder'});
+            var newUnit = Game.spawns[spawn].createCreep(this.parts(), undefined, {role: 'builder'});
             if (newUnit < 0) {
                 return 'low energy';
             }
@@ -264,7 +264,7 @@ var unitInfo = {
         },
         make : function (spawn) {
             console.log('Attempting to spawn new upgrader at ' + spawn);
-            var newUnit = Game.spawns[spawn].createCreep(this.upgrader.parts(), undefined, {role: 'upgrader'});
+            var newUnit = Game.spawns[spawn].createCreep(this.parts(), undefined, {role: 'upgrader'});
             if (newUnit < 0) {
                 return 'low energy';
             }
@@ -322,7 +322,7 @@ var unitInfo = {
         },
         make : function (spawn) {
             console.log('Attempting to spawn new mover at ' + spawn);
-            var newUnit = Game.spawns[spawn].createCreep(this.mover.parts(), undefined, {role: 'mover'});
+            var newUnit = Game.spawns[spawn].createCreep(this.parts(), undefined, {role: 'mover'});
             if (newUnit < 0) {
                 return 'low energy';
             }
