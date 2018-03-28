@@ -30,6 +30,7 @@ var env = require('Environment'),
                 workParts = Math.floor((enCap / 2.5) / 100),
                 moveParts = Math.floor((enCap / 2.5) / 50),
                 carryParts = Math.floor((enCap / 5) / 50);
+            console.log(enCap);
             while (workParts > 0) {
                 arr.push(WORK);
                 workParts--;
@@ -60,7 +61,6 @@ var env = require('Environment'),
         role : function(creep) {
             if(creep.carry.energy < creep.carryCapacity) {
                 var sources = creep.room.find(FIND_SOURCES);
-                console.log('Creep range to source 1: ' + creep.pos.getRangeTo(sources[1].pos));
                 if (creep.pos.getRangeTo(sources[1].pos) === 1) {
                     creep.harvest(sources[1])
                 } else if (env.isBlocked(sources[1])) {
