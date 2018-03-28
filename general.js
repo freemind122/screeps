@@ -35,12 +35,16 @@ var custom = {
         },
         environment : {
             isSpawnBlocked : function(source) {
-                var area = source.room.lookForAtArea(LOOK_TERRAIN, source.pos.y-1,source.pos.x-1,source.pos.y+1,source.pos.x+1, true);
+                var area = source.room.lookForAtArea(LOOK_TERRAIN, source.pos.y-1,source.pos.x-1,source.pos.y+1,source.pos.x+1, true).filter(function (sources) {
+                    return (
+                        sources.type === 'terrain'
+                    ) && (
+                        sources.terrain === 'plain' ||
+                        sources.terrain === 'swamp'
+                    )
+                });
                 for (i = 0; i < area.length; i++) {
-                    console.log(area[i].type);
-                    if (area[i].terrain === 'plain' && source.room.lookforat(LOOK_CREEPS, area[i].x, area[i].y, true) === undefined) {
-                        console.log('clear space at - x:' + area[i].x + ' y:' + area[i].y);
-                    }
+                    console.log(area[i].terrain);
                 }
             }
         }
