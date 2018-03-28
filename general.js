@@ -6,7 +6,6 @@
  * var mod = require('general');
  * mod.thing == 'a thing'; // true
  */
-var unitInfo = require('Units');
 
 var custom = {
 
@@ -64,17 +63,7 @@ var custom = {
 
         },
         units : {
-            make : function (spawn,unit) {
-                console.log('Atttempting to spawn new ' + unit + ' at ' + spawn);
-                var newUnit = Game.spawns[spawn].createCreep(eval('unitInfo.' + unit + '.parts()'), undefined, {role: unit});
-                if (newUnit < 0) {
-                    return 'low energy';
-                }
-                else {
-                    console.log('say hello to your new ' + unit + ', ' + newUnit);
-                    newUnit;
-                }
-            }
+
         },
         system : {
             memCleanup : function () {

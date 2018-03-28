@@ -37,6 +37,17 @@ var unitInfo = {
                 return arr;
             }
         },
+        make : function (spawn) {
+            console.log('Attempting to spawn new harvester2 at ' + spawn);
+            var newUnit = Game.spawns[spawn].createCreep(this.harvester2.parts(), undefined, {role: 'harvester2'});
+            if (newUnit < 0) {
+                return 'low energy';
+            }
+            else {
+                console.log('say hello to your new harvester2, ' + newUnit);
+                newUnit;
+            }
+        },
         role : function(creep) {
             if(creep.carry.energy < creep.carryCapacity) {
                 var sources = creep.room.find(FIND_SOURCES);
@@ -87,6 +98,17 @@ var unitInfo = {
             }
             if (arr.length >= 3) {
                 return arr;
+            }
+        },
+        make : function (spawn) {
+            console.log('Attempting to spawn new harvester at ' + spawn);
+            var newUnit = Game.spawns[spawn].createCreep(this.harvester.parts(), undefined, {role: 'harvester'});
+            if (newUnit < 0) {
+                return 'low energy';
+            }
+            else {
+                console.log('say hello to your new harvester, ' + newUnit);
+                newUnit;
             }
         },
         role : function(creep) {
@@ -140,6 +162,17 @@ var unitInfo = {
             }
             if (arr.length >= 3) {
                 return arr;
+            }
+        },
+        make : function (spawn) {
+            console.log('Attempting to spawn new builder at ' + spawn);
+            var newUnit = Game.spawns[spawn].createCreep(this.builder.parts(), undefined, {role: 'builder'});
+            if (newUnit < 0) {
+                return 'low energy';
+            }
+            else {
+                console.log('say hello to your new builder, ' + newUnit);
+                newUnit;
             }
         },
         role : function(creep) {
@@ -229,6 +262,17 @@ var unitInfo = {
                 return arr;
             }
         },
+        make : function (spawn) {
+            console.log('Attempting to spawn new upgrader at ' + spawn);
+            var newUnit = Game.spawns[spawn].createCreep(this.upgrader.parts(), undefined, {role: 'upgrader'});
+            if (newUnit < 0) {
+                return 'low energy';
+            }
+            else {
+                console.log('say hello to your new upgrader, ' + newUnit);
+                newUnit;
+            }
+        },
         role : function(creep) {
             if(creep.memory.upgrading && creep.carry.energy === 0) {
                 creep.memory.upgrading = false;
@@ -274,6 +318,17 @@ var unitInfo = {
             }
             if (arr.length >= 3) {
                 return arr;
+            }
+        },
+        make : function (spawn) {
+            console.log('Attempting to spawn new mover at ' + spawn);
+            var newUnit = Game.spawns[spawn].createCreep(this.mover.parts(), undefined, {role: 'mover'});
+            if (newUnit < 0) {
+                return 'low energy';
+            }
+            else {
+                console.log('say hello to your new mover, ' + newUnit);
+                newUnit;
             }
         },
         role : function(creep) {
