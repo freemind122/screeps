@@ -262,11 +262,12 @@ var env = require('Environment'),
                 //set the creep's target list to sources
                 var targets = creep.room.find(FIND_SOURCES);
                 //if the closest target is not in range
-                if(creep.harvest(targets[0]) === ERR_NOT_IN_RANGE && !env.isBlocked(targets[0])) {
-                    //move to the target
-                    creep.moveTo(targets[0]);
-                }else {
+                if (creep.pos.getRangeTo(targets[0].pos) === 1) {
+                    creep.harvest(targets[0])
+                } else if (env.isBlocked(targets[0])) {
                     creep.moveTo(Game.flags.Rally)
+                } else {
+                    creep.moveTo(targets[0])
                 }
             }
         },
@@ -333,8 +334,12 @@ var env = require('Environment'),
             }
             else {
                 var sources = creep.room.find(FIND_SOURCES);
-                if(creep.harvest(sources[0]) === ERR_NOT_IN_RANGE) {
-                    creep.moveTo(sources[0]);
+                if (creep.pos.getRangeTo(sources[0].pos) === 1) {
+                    creep.harvest(sources[0])
+                } else if (env.isBlocked(sources[0])) {
+                    creep.moveTo(Game.flags.Rally)
+                } else {
+                    creep.moveTo(sources[0])
                 }
             }
         },
@@ -388,10 +393,12 @@ var env = require('Environment'),
         role : function(creep) {
             if(creep.carry.energy < creep.carryCapacity) {
                 var sources = creep.room.find(FIND_SOURCES);
-                if(creep.harvest(sources[1]) === ERR_NOT_IN_RANGE && !env.isBlocked(sources[1])) {
-                    creep.moveTo(sources[1]);
-                } else {
+                if (creep.pos.getRangeTo(sources[0].pos) === 1) {
+                    creep.harvest(sources[0])
+                } else if (env.isBlocked(sources[0])) {
                     creep.moveTo(Game.flags.Rally)
+                } else {
+                    creep.moveTo(sources[0])
                 }
             }
             else {
