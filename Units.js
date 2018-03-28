@@ -136,10 +136,12 @@ var env = require('Environment'),
         role : function(creep) {
             if(creep.carry.energy < creep.carryCapacity) {
                 var sources = creep.room.find(FIND_SOURCES);
-                if(creep.harvest(sources[0]) === ERR_NOT_IN_RANGE && !env.isBlocked(sources[0])) {
-                    creep.moveTo(sources[0]);
-                } else {
+                if (creep.pos.getRangeTo(sources[0].pos) === 1) {
+                    creep.harvest(sources[0])
+                } else if (env.isBlocked(sources[0])) {
                     creep.moveTo(Game.flags.Rally)
+                } else {
+                    creep.moveTo(sources[0])
                 }
             }
             else {
