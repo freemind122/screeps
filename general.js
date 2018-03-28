@@ -35,6 +35,7 @@ var custom = {
         },
         environment : {
             isSpawnBlocked : function(source) {
+                var emptySpaces = 0;
                 var area = source.room.lookForAtArea(LOOK_TERRAIN, source.pos.y-1,source.pos.x-1,source.pos.y+1,source.pos.x+1, true).filter(function (sources) {
                     return (
                         sources.type === 'terrain'
@@ -45,10 +46,12 @@ var custom = {
                 });
                 for (i = 0; i < area.length; i++) {
                     var tile = source.room.lookForAt(LOOK_CREEPS,area[i].x,area[i].y);
-                    if (tile[0] !== undefined) {
-                        console.log('Creep in empty space - x:' + area[0].x + ' y:' + area[0].y);
+                    if (tile[0] === undefined) {
+                        emptySpaces++;
+                        console.log('Empty space - x:' + area[0].x + ' y:' + area[0].y);
                     }
                 }
+                return (emptySpaces > 0);
             }
         }
     },
