@@ -1,11 +1,6 @@
 
 var unitInfo = require('Units');
 
-//Variables from the creep roles modules
-var roleHarvester = require('role.harvester');
-var roleUpgrader = require('role.upgrader');
-var roleBuilder = require('role.builder');
-
 //Function for listing out all active units of a specific type
 var custom = require('general');
 
@@ -30,11 +25,7 @@ Governor();
 
 
 try {
-    //hiyo peeps testing woo
-    if (custom.variables.environment.isSpawnBlocked(Game.spawns['Origin'].room.find(FIND_SOURCES)[0])) {
-        console.log('it works');
-    }
-    console.log(Game.spawns['Origin'].room.energyAvailable);
+    console.log(custom.variables.units.num('upgrader'))
 } catch (e) {
     console.log("Didn't work.");
     console.log("Error details:");

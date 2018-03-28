@@ -30,7 +30,7 @@ var custom = {
                 return _.filter(Game.creeps,(creep) => creep.memory.role === unit);
             },
             num : function (unit) {
-                return _.filter(Game.creeps,(creep) => creep.memory.role == unit).length;
+                return list(unit).length;
             }
         },
         environment : {

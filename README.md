@@ -34,3 +34,8 @@ var x7 = new Function();  // A new Function object
 var x8 = new Date();      // A new Date object
 
 - how many required units of each type should be governed by percentages, as should how many parts should be used to make each one
+
+my own functions:
+- check if spawn is blocked
+    syntax - custom.variables.environment.isSourceBlocked(   [source object}   )
+    return - boolean
